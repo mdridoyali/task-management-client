@@ -58,7 +58,7 @@ const AuthProvider = ({children}) => {
     };
   
     const AuthInfo = { loading, user,userProfile, setUserProfile, GitHub, In, update, Google, OUT, creatUser };
-  
+    //  console.log(user, userProfile)
     return (
       <AuthContext.Provider value={AuthInfo}>{children}</AuthContext.Provider>
     );

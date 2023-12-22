@@ -112,10 +112,7 @@ const Dashboard = () => {
     <div className="text-white lg:p-[30px] md:p-[20px] p-2">
       
       <h2 className="lg:text-[30px] ml-3 mt-3 font-medium md:text-[26px] items-center text-[24px] flex flex-wrap gap-4">
-        Hello, Mohammad{" "}
-        <span className="flex items-center">
-          Arif <img className="lg:w-10  w-8" src="/images/hand.png" alt="" />
-        </span>{" "}
+       Hello, {user?.displayName}
       </h2>
 
       <div className=" ml-3 mt-10  flex sm:flex-row flex-col gap-5 ">

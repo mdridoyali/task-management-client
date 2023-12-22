@@ -43,7 +43,7 @@ const Register = () => {
     const image = fullImage;
     console.log(image);
     const result = await axios.post(
-      `https://api.imgbb.com/1/upload?key=aeeb86c89c07e1b579479f8b39ef94a5`,
+      `https://api.imgbb.com/1/upload?key=b4efd57cf3e771c9ed3229c7d964e6e7`,
       { image },
       {
         headers: {
