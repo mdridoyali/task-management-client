@@ -39,7 +39,7 @@ const TaskCard = ({ task }) => {
 //   }, 500);
 
   const onUpdate = (status,id)=>{
-       axios.put(`http://localhost:3000/updateTask/${status}/${id}`)
+       axios.put(`https://task-manage-server-three.vercel.app/updateTask/${status}/${id}`)
        .then(res => {
         refetch()
 

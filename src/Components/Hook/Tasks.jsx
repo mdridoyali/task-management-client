@@ -12,7 +12,7 @@ const Tasks = () => {
     const {data:tasks ,isLoading ,refetch} = useQuery({
         queryKey:[`tasks${user?.email}`],
         queryFn:async()=>{
-        const TaskData = await axios.get(`http://localhost:3000/tasks/${user?.email}`)
+        const TaskData = await axios.get(`https://task-manage-server-three.vercel.app/tasks/${user?.email}`)
                return  TaskData.data
         }
   

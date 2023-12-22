@@ -61,7 +61,7 @@ const Dashboard = () => {
     
       
 
-      axios.post('http://localhost:3000/addtasks',taskData)
+      axios.post('https://task-manage-server-three.vercel.app/addtasks',taskData)
       .then(res => {
         console.log(res)
        refectch()
@@ -168,43 +168,6 @@ const Dashboard = () => {
                 Add Task <IoMdAdd className="text-black"></IoMdAdd>{" "}
               </button>
             </div>
-
-            {/* <Tab
-        onClick={()=>{setItemNumber(1)}}
-          className={`rounded-full px-4 py-2 border-2 outline-none  border-[#3e3857] ${
-            itemNumber  !== 1 ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
-          }`}
-          
-        >
-          All Task
-        </Tab>
-        <Tab
-        onClick={()=>{setItemNumber(2)}}
-          className={`rounded-full px-4 py-2 border-2 outline-none  border-[#3e3857] ${
-            itemNumber  !== 2 ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
-          }`}
-          
-        >
-          All Task
-        </Tab>
-        <Tab
-        onClick={()=>{setItemNumber(3)}}
-          className={`rounded-full px-4 py-2 border-2 outline-none  border-[#3e3857] ${
-            itemNumber  !== 3 ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
-          }`}
-          
-        >
-          All Task
-        </Tab>
-        <Tab
-        onClick={()=>{setItemNumber(4)}}
-          className={`rounded-full px-4 py-2 border-2 outline-none  border-[#3e3857] ${
-            itemNumber  !== 4 ? 'bg-[#161420]  text-white ' : 'bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white'
-          }`}
-          
-        >
-          All Task
-        </Tab> */}
           </TabList>
 
           <TabPanel>
