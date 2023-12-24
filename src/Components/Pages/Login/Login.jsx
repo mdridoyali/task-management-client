@@ -139,7 +139,7 @@ const handelGitHub = ()=>{
     <input
       required
       name="password"
-      placeholder="ex : PassWord1"
+      placeholder="ex : PassWord"
       type="password"
       className="input w-full sm:text-lg text-base p-2 mb-2 focus:outline-none focus:border-[#00ADB5] border-2 border-gray-400 rounded-lg"
     />

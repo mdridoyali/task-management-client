@@ -8,8 +8,8 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 const Footer = () => {
     return (
         <div>
-            <footer className="footer items-center p-7 bg-neutral text-neutral-content">
-                <aside className="items-center grid-flow-col">
+            <footer className="footer items-center px-7 py-16 bg-neutral text-neutral-content">
+                <aside className="items-center ">
                     <h1 className="text-4xl  font-semibold">Task<span className="text-amber-500" >Manage</span></h1>
                     <div>
                         <p>Copyright © 2023 - All right reserved</p>

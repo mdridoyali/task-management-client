@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -62,7 +63,7 @@ const TaskCard = ({ task }) => {
   // console.log(`${time.hours} hours, ${time.minutes} minutes, ${time.seconds} seconds.`);
   return (
     <div
-      className="bg-[#292731] rounded-lg lg:p-5 sm:p-4 p-3 min-w-[250px] w-full max-w-[400px]"
+      className="border rounded-lg lg:p-5 sm:p-4 p-3 min-w-[250px] w-full max-w-[400px]"
       key={task.Id}
     >
       <div className="flex gap-5 items-center">
@@ -88,7 +89,7 @@ const TaskCard = ({ task }) => {
       </div>
 
       <h2 className="mt-4 font-semibold "> {task.task_title}</h2>
-      <p className="mt-3 text-sm text-gray-300">{task?.task_description}</p>
+      <p className="mt-3 text-sm ">{task?.task_description}</p>
       <div className="flex flex-wrap justify-between items-center">
         <p className="text-sm mt-4">
           Deadline :{" "}
@@ -100,7 +101,7 @@ const TaskCard = ({ task }) => {
             </>
           )}{" "}
         </p>
-        <button className="cursor-pointer" onClick={showTheMOdal}><FaArrowRight  className="text-white mt-2"></FaArrowRight></button>
+        <button className="cursor-pointer" onClick={showTheMOdal}><FaArrowRight  className="mt-2"></FaArrowRight></button>
         
       </div>
       {

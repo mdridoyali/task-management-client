@@ -15,61 +15,61 @@ import Swal from "sweetalert2";
 
 const Dashboard = () => {
   const [itemNumber, setItemNumber] = useState(0);
-  const [,,refetch] = Tasks()
-  const {user} = useContext(AuthContext)
+  const [, , refetch] = Tasks()
+  const { user } = useContext(AuthContext)
   const { register, handleSubmit } = useForm();
- 
+
   const [showModal, setShowModal] = useState(false);
 
   const onSubmit = (data) => {
- // You can handle the form data submission here
+    // You can handle the form data submission here
 
 
- if(data?.taskName.length < 6){
-  return toast('minium 6 character task title',{
-    duration: 3000,
-  });
-  
- }
+    if (data?.taskName.length < 6) {
+      return toast('minium 6 character task title', {
+        duration: 3000,
+      });
 
- if(data?.description.length < 20){
-  return toast('minium 20 character description',{
-    duration: 3000,
-  });
-  
- }
+    }
 
- if(data?.deadline.length < 5){
-  return toast('please give the deadline ',{
-    duration: 3000,
-  });
-  
- }
+    if (data?.description.length < 20) {
+      return toast('minium 20 character description', {
+        duration: 3000,
+      });
 
- 
+    }
+
+    if (data?.deadline.length < 5) {
+      return toast('please give the deadline ', {
+        duration: 3000,
+      });
+
+    }
+
+
     const taskData = {
-      task_deadline : data?.deadline,
-      task_Id:uuidv4(),
+      task_deadline: data?.deadline,
+      task_Id: uuidv4(),
       task_title: data?.taskName,
       task_description: data?.description,
-      status: "pending",   
+      status: "pending",
       email: user?.email,
-      notified: false ,
+      notified: false,
       priority: data?.priority
-      }
-      console.log(taskData)
-    
-      
+    }
+    console.log(taskData)
 
-      axios.post('https://task-manage-server-three.vercel.app/addtasks',taskData)
+
+
+    axios.post('https://task-manage-server-three.vercel.app/addtasks', taskData)
       .then(res => {
         console.log(res)
-       refectch()
-        setShowModal(false) 
+        refectch()
+        setShowModal(false)
 
       })
-      .catch((err)=>{
-        setShowModal(false) 
+      .catch((err) => {
+        setShowModal(false)
         console.log(err)
         Swal.fire({
           icon: "error",
@@ -77,7 +77,7 @@ const Dashboard = () => {
           text: "Something went wrong",
         });
       })
-      
+
   };
 
 
@@ -109,36 +109,34 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="text-white lg:p-[30px] md:p-[20px] p-2">
-      
+    <div className=" lg:p-[30px] md:p-[20px] p-2">
+
       <h2 className="lg:text-[30px] ml-3 mt-3 font-medium md:text-[26px] items-center text-[24px] flex flex-wrap gap-4">
-       Hello, {user?.displayName}
+        Hello, {user?.displayName}
       </h2>
 
       <div className=" ml-3 mt-10  flex sm:flex-row flex-col gap-5 ">
-        <h2 className="">Today you have </h2>
 
-        <h2 className="sm:text-base text-sm leading-[70px] gap-2 flex flex-wrap">
-          <h4>
-            <span className="bg-[#562CFF] ml-1  p-3 font-bold sm:text-xl text-base rounded-full ">
+        <div className="sm:text-base text-sm leading-[70px] gap-2 flex flex-wrap">
+          <h4 className="border-2  pl-2 rounded-full py-[3px]">
+            Open Task
+            <span className="bg-[#562CFF] ml-1 px-5 py-1 font-bold sm:text-xl text-white rounded-full ">
               02
             </span>{" "}
-            Open Task
           </h4>
-          <h4>
-            {" "}
-            <span className="bg-[#FF7A00] ml-1  p-3 font-bold sm:text-xl text-base rounded-full">
-              01
-            </span>{" "}
+          <h4 className="border-2 pl-2 rounded-full py-[3px]">
             completed
-          </h4>
-          <h4>
-            <span className="bg-[#00B81D] ml-1  p-3 font-bold sm:text-xl text-base rounded-full">
+            <span className="bg-[#FF7A00] ml-1  px-5 py-1 font-bold sm:text-xl  text-white rounded-full">
               01
             </span>{" "}
-            is ongoing{" "}
           </h4>
-        </h2>
+          <h4 className="border-2 pl-2 rounded-full py-[3px]">
+            is ongoing{" "}
+            <span className="bg-[#00B81D] ml-1  px-5 py-1 font-bold sm:text-xl  text-white rounded-full">
+              01
+            </span>{" "}
+          </h4>
+        </div>
       </div>
 
       {/* Tabs */}
@@ -152,11 +150,10 @@ const Dashboard = () => {
                   onClick={() => {
                     setItemNumber(item.id);
                   }}
-                  className={` rounded-full md:px-4 md:py-2 px-3 py-1 border-2 outline-none  border-[#3e3857] ${
-                    itemNumber !== item.id
-                      ? "bg-[#161420]  text-white "
-                      : "bg-[#060608] focus:bg-[#060608] focus:rounded-full focus:text-white"
-                  }`}
+                  className={` rounded-full md:px-4 md:py-2 px-3 py-1 border-2 outline-none  border-[#3e3857] ${itemNumber !== item.id
+                    ? "bg-[#ffffff]  cursor-pointer "
+                    : "bg-[#363535]  "
+                    }`}
                   key={item.id}
                 >
                   {item.item}
@@ -164,12 +161,11 @@ const Dashboard = () => {
               ))}
             </div>
             <div className="flex sm:justify-center justify-start sm:items-center items-start ">
-              <button onClick={()=>{setShowModal(true)}} className="btn">
+              <button onClick={() => { setShowModal(true) }} className="btn">
                 Add Task <IoMdAdd className="text-black"></IoMdAdd>{" "}
               </button>
             </div>
           </TabList>
-
           <TabPanel>
             <AllTask data={tasks} task={""}></AllTask>
           </TabPanel>
@@ -185,10 +181,10 @@ const Dashboard = () => {
         </Tabs>
       </div>
       {showModal ? <div className="fixed  inset-0 z-50 flex items-center text-black justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-        <div className="relative w-auto max-w-3xl mx-auto my-6">
-          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+        <div className="relative w-96 max-w-3xl mx-auto my-6">
+          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full  outline-none focus:outline-none">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="p-6">
+              <div className="p-6 rounded bg-gray-200 px-10">
                 <h3 className="text-lg font-semibold mb-4 text-black">
                   Add Task
                 </h3>
@@ -239,19 +235,19 @@ const Dashboard = () => {
                   />
                 </div>
                 <div className="flex justify-end gap-3">
-                <button
-                   onClick={()=>{setShowModal(false)}}
-                    className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none "
+                  <button
+                    onClick={() => { setShowModal(false) }}
+                    className="bg-red-500  px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none "
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+                    className="bg-blue-500  px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
                   >
                     Submit
                   </button>
-                  
+
                 </div>
               </div>
             </form>
@@ -259,7 +255,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div> : ""}
-      
+
     </div>
   );
 };
